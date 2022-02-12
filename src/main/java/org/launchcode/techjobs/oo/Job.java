@@ -37,14 +37,14 @@ public class Job {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Job)) return false;
         Job job = (Job) o;
-        return id == job.id && Objects.equals(name, job.name) && Objects.equals(employer, job.employer) && Objects.equals(location, job.location) && Objects.equals(positionType, job.positionType) && Objects.equals(coreCompetency, job.coreCompetency);
+        return id == job.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, employer, location, positionType, coreCompetency);
+        return Objects.hash(id);
     }
 
 
@@ -53,10 +53,11 @@ public class Job {
 
     public int getId() {
         return id;
-    }
+        }
+
 
     public String getName() {
-        return name;
+           return name;
     }
 
     public void setName(String name) {
@@ -65,6 +66,7 @@ public class Job {
 
     public Employer getEmployer() {
         return employer;
+
     }
 
     public void setEmployer(Employer employer) {
@@ -93,5 +95,48 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+
+
+    @Override
+    public String toString() {
+        if(name == ""){
+            name = "Data not available";
+        }
+        String employeeOutput = "Data not available";
+        if(employer != null){
+            employeeOutput = employer.toString();
+        }
+        String locationOutput = "Data not available";
+        if(location != null){
+            locationOutput = location.toString();
+        }
+        String positionTypeOutput = "Data not available";
+        if(positionType != null){
+            positionTypeOutput = positionType.toString();
+        }
+
+        String coreCompetencyOutput = "Data not available";
+        if(coreCompetency != null){
+            coreCompetencyOutput = coreCompetency.toString();
+        }
+        String a =
+                "\n" + "ID:" + id +
+                        ", Name:'" + name + '\'' +
+                        ", Employer:" + employeeOutput  +
+                        ", Location:" + locationOutput  +
+                        ", Position Type:" + positionTypeOutput +
+                        ", Core Competency:" + coreCompetencyOutput + "\n";
+
+        return a;
+
+      //  String a =
+        //        "\n" + "ID:" + id +
+           //     ", Name:'" + name + '\'' +
+          //      ", Employer:" + employer == null ? "Data not available" : employer +
+          //      ", Location:" + location == null ? "Data not available" : location +
+           //     ", Position Type:" + positionType == null ? "Data not available" : positionType +
+           //     ", Core Competency:" + coreCompetency == null ? "Data not available" : coreCompetency + "\n";
+    //return a;
     }
 }
