@@ -50,17 +50,18 @@ public class JobTest {
     public void testJobsForEquality() {
         Job cashier1 = new Job("Cashier", new Employer("Wendy's"), new Location("Charlotte"), new PositionType("Manager"), new CoreCompetency("Kindness"));
         Job cashier2 = new Job("Cashier", new Employer("Wendy's"), new Location("Charlotte"), new PositionType("Manager"), new CoreCompetency("Kindness"));
-        {
+
             assertFalse(cashier1.equals(cashier2));
-        }
+
     }
 
     @Test
     public void testToStringStartsAndEndsWithNewLine() {
         Job nurse = new Job("Nurse", new Employer("Atrium"), new Location("Concord"), new PositionType("Baby Unit"), new CoreCompetency("Loves kids"));
-        {
-            assertEquals("\n" + nurse.toString() + "\n", "\n" + nurse.toString() + "\n");
-        }
+        String testString = nurse.toString();
+            assertEquals('\n', testString.charAt(0));
+            assertEquals('\n', testString.charAt(testString.length()-1));
+
 
 
     }
@@ -69,24 +70,24 @@ public class JobTest {
         Job nurse = new Job("Nurse", new Employer("Atrium"), new Location("Concord"), new PositionType("Baby Unit"), new CoreCompetency("Loves kids"));
 
         String a =
-            "\n" + "ID:" + nurse.getId() +
-                    ", Name:'" + nurse.getName() + '\'' +
-                    ", Employer:" + nurse.getEmployer() +
-                    ", Location:" + nurse.getLocation() +
-                    ", Position Type:" + nurse.getPositionType() +
-                    ", Core Competency:" + nurse.getCoreCompetency() + "\n";
+            "\n" + "ID: " + nurse.getId() +
+                    "\nName: " + nurse.getName() +
+                    "\nEmployer: " + nurse.getEmployer() +
+                    "\nLocation: " + nurse.getLocation() +
+                    "\nPosition Type: " + nurse.getPositionType() +
+                    "\nCore Competency: " + nurse.getCoreCompetency() + "\n";
         assertEquals(a, nurse.toString());
 
     }
     @Test
     public void testToStringHandlesEmptyField(){
-        Job nurse = new Job("", new Employer("Atrium"), null, new PositionType("Baby Unit"), new CoreCompetency("Loves kids"));
-        String a = "\n" + "ID:" + nurse.getId() +
-        ", Name:'" + "Data not available" + '\'' +
-                ", Employer:" + nurse.getEmployer() +
-                ", Location:" + "Data not available" +
-                ", Position Type:" + nurse.getPositionType() +
-                ", Core Competency:" + nurse.getCoreCompetency() + "\n";
+        Job nurse = new Job("", new Employer("Atrium"), new Location(""), new PositionType("Baby Unit"), new CoreCompetency("Loves kids"));
+        String a = "\n" + "ID: " + nurse.getId() +
+                "\nName: Data not available" +
+                "\nEmployer: Atrium"  +
+                "\nLocation: Data not available"  +
+                "\nPosition Type: Baby Unit" +
+                "\nCore Competency: Loves kids"+ "\n";
         assertEquals(a, nurse.toString());
 
     }

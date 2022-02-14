@@ -103,30 +103,29 @@ public class Job {
         if(name == ""){
             name = "Data not available";
         }
-        String employeeOutput = "Data not available";
-        if(employer != null){
-            employeeOutput = employer.toString();
-        }
-        String locationOutput = "Data not available";
-        if(location != null){
-            locationOutput = location.toString();
-        }
-        String positionTypeOutput = "Data not available";
-        if(positionType != null){
-            positionTypeOutput = positionType.toString();
+
+        if(employer.getValue() == ""){
+            employer.setValue("Data not available");
         }
 
-        String coreCompetencyOutput = "Data not available";
-        if(coreCompetency != null){
-            coreCompetencyOutput = coreCompetency.toString();
+        if(location.getValue() == ""){
+            location.setValue("Data not available");
+        }
+
+        if(positionType.getValue() == ""){
+            positionType.setValue("Data not available");
+        }
+
+        if(coreCompetency.getValue() == ""){
+            coreCompetency.setValue("Data not available");
         }
         String a =
-                "\n" + "ID:" + id +
-                        ", Name:'" + name + '\'' +
-                        ", Employer:" + employeeOutput  +
-                        ", Location:" + locationOutput  +
-                        ", Position Type:" + positionTypeOutput +
-                        ", Core Competency:" + coreCompetencyOutput + "\n";
+                "\n" + "ID: " + id +
+                        "\nName: " + name +
+                        "\nEmployer: " + employer  +
+                        "\nLocation: " + location  +
+                        "\nPosition Type: " + positionType +
+                        "\nCore Competency: " + coreCompetency + "\n";
 
         return a;
 
